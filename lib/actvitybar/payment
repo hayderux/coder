@@ -1,0 +1,28 @@
+Column paymethod(currency, VoidCallback onTap, qr) {
+    return Column(
+      children: <Widget>[
+        Container(
+          height: 200,
+          width: 200,
+          margin: EdgeInsets.only(top: 20, left: 50, right: 30),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              image: DecorationImage(image: AssetImage(qr))),
+        ),
+        Padding(
+          padding: EdgeInsets.only(top: 20, bottom: 10),
+          child: Text(
+            currency,
+            style: TextStyle(fontFamily: 'sf', fontSize: 20),
+          ),
+        ),
+        RoundedButton(
+          icon: Icons.content_copy,
+          width: 150,
+          text: 'Copy',
+          ontap: onTap,
+        )
+      ],
+    );
+  }
+}

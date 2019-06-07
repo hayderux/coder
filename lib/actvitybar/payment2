@@ -1,0 +1,38 @@
+/*bottomicon(FontAwesomeIcons.donate, () {
+              showRoundedModalBottomSheet(
+                  context: context,
+                  radius: 15,
+                  color: Theme.of(context).scaffoldBackgroundColor,
+                  builder: (BuildContext context) {
+                    return Padding(
+                      padding: EdgeInsets.only(top: 20, left: 20, right: 20),
+                      child: Column(
+                        children: <Widget>[
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Text('Donate',
+                                  style: TextStyle(
+                                      fontFamily: 'sf', fontSize: 22)),
+                              CloseButton()
+                            ],
+                          ),
+                          Divider(),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              paymethod(
+                                  'Bitcoin(BTC)', () {}, 'assets/btc.jpg'),
+                              paymethod(
+                                  'Ethereum(ETH)', () {}, 'assets/eth.jpg'),
+                              paymethod(
+                                  'Litecoin(LTC)', () {}, 'assets/ltc.jpg'),
+                              paymethod('PayPal', () {}, 'assets/paypal.jpg'),
+                              paymethod('WeChat', () {}, 'assets/wechat.jpg')
+                            ],
+                          )
+                        ],
+                      ),
+                    );
+                  });
+            }),*/

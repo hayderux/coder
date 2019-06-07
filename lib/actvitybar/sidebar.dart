@@ -1,11 +1,10 @@
-import 'package:coder/components/rounded_button.dart';
+import 'package:coder/components/custom_dialog.dart';
 import 'package:coder/components/rounded_window.dart';
 import 'package:flutter/material.dart';
 
 import 'package:coder/style/themebloc.dart';
-import 'package:coder/style/themes.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:rounded_modal/rounded_modal.dart';
+import 'package:coder/core/settings.dart';
 
 class SideBar extends StatefulWidget {
   final Widget body;
@@ -20,12 +19,16 @@ class SideBar extends StatefulWidget {
 class SideState extends State<SideBar> {
   InkWell bottomicon(IconData icon, VoidCallback onTap) {
     return InkWell(
+      splashColor: Colors.transparent,
+      highlightColor: Colors.transparent,
+      focusColor: Colors.transparent,
+      hoverColor: Colors.transparent,
       child: Padding(
         padding: EdgeInsets.only(right: 10, left: 10, bottom: 10, top: 10),
         child: Icon(
           icon,
           color: Colors.white,
-          size: 24,
+          size: 30,
         ),
       ),
       onTap: onTap,
@@ -44,60 +47,17 @@ class SideState extends State<SideBar> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            bottomicon(FontAwesomeIcons.donate, () {
-              showRoundedModalBottomSheet(
-                  context: context,
-                  radius: 15,
-                  color: Theme.of(context).scaffoldBackgroundColor,
-                  builder: (BuildContext context) {
-                    return Padding(
-                      padding: EdgeInsets.only(top: 20, left: 20, right: 20),
-                      child: Column(
-                        children: <Widget>[
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              Text('Donate',
-                                  style: TextStyle(
-                                      fontFamily: 'sf', fontSize: 22)),
-                              CloseButton()
-                            ],
-                          ),
-                          Divider(),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              paymethod(
-                                  'Bitcoin(BTC)', () {}, 'assets/btc.jpg'),
-                              paymethod(
-                                  'Ethereum(ETH)', () {}, 'assets/eth.jpg'),
-                              paymethod(
-                                  'Litecoin(LTC)', () {}, 'assets/ltc.jpg'),
-                              paymethod('PayPal', () {}, 'assets/paypal.jpg'),
-                              paymethod('WeChat', () {}, 'assets/wechat.jpg')
-                            ],
-                          )
-                        ],
-                      ),
-                    );
-                  });
-            }),
-            bottomicon(FontAwesomeIcons.sun, () {
-              widget.themeBloc.selectedTheme.add(_buildLightTheme());
-            }),
-            bottomicon(FontAwesomeIcons.moon, () {
-              widget.themeBloc.selectedTheme.add(_buildDarkTheme());
-            }),
+            SizedBox(
+              height: 30,
+            ),
             bottomicon(FontAwesomeIcons.cog, () {
               showDialog(
                   context: context,
-                  barrierDismissible: false,
+                  barrierDismissible: true,
                   builder: (buildContext) {
-                    return RoundedWindow(
+                    return CustomDialog(
                       title: 'Settings',
-                      body: Container(
-                        color: Colors.grey.shade200,
-                      ),
+                      body: SettingView(),
                     );
                   });
             })
@@ -106,40 +66,4 @@ class SideState extends State<SideBar> {
       ),
     );
   }
-
-  Column paymethod(currency, VoidCallback onTap, qr) {
-    return Column(
-      children: <Widget>[
-        Container(
-          height: 200,
-          width: 200,
-          margin: EdgeInsets.only(top: 20, left: 50, right: 30),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              image: DecorationImage(image: AssetImage(qr))),
-        ),
-        Padding(
-          padding: EdgeInsets.only(top: 20, bottom: 10),
-          child: Text(
-            currency,
-            style: TextStyle(fontFamily: 'sf', fontSize: 20),
-          ),
-        ),
-        RoundedButton(
-          icon: Icons.content_copy,
-          width: 150,
-          text: 'Copy',
-          ontap: onTap,
-        )
-      ],
-    );
-  }
-}
-
-DemoTheme _buildLightTheme() {
-  return DemoTheme('Pink', lightTheme);
-}
-
-DemoTheme _buildDarkTheme() {
-  return DemoTheme('Pink', darkTheme);
 }

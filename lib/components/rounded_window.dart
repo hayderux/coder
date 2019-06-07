@@ -1,3 +1,4 @@
+import 'package:coder/components/close_button.dart';
 import 'package:flutter/material.dart';
 
 class RoundedWindow extends StatelessWidget {
@@ -6,23 +7,27 @@ class RoundedWindow extends StatelessWidget {
   final Widget body;
   RoundedWindow({
     @required this.title,
-    this.height,
+    @required this.height,
     this.body,
   });
   dialogContent(BuildContext context) {
     return Stack(
       children: <Widget>[
+        //...bottom card part,
         Container(
             height: height,
             padding: EdgeInsets.only(
               top: 10,
+              bottom: Consts.padding,
+              left: Consts.padding,
+              right: Consts.padding,
             ),
             margin: EdgeInsets.only(top: Consts.avatarRadius),
             decoration: new BoxDecoration(
-              //color: Theme.of(context).scaffoldBackgroundColor,
-              color: Theme.of(context).primaryColor,
+              color: Theme.of(context).scaffoldBackgroundColor,
+              //color: Theme.of(context).primaryColor,
               shape: BoxShape.rectangle,
-              //borderRadius: BorderRadius.circular(Consts.padding),
+              borderRadius: BorderRadius.circular(30),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black26,
@@ -32,9 +37,9 @@ class RoundedWindow extends StatelessWidget {
               ],
             ),
             child: Scaffold(
-              backgroundColor: Theme.of(context).primaryColor,
+              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
               appBar: PreferredSize(
-                  preferredSize: Size.fromHeight(80),
+                  preferredSize: Size.fromHeight(70),
                   child: Container(
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.only(
@@ -54,21 +59,20 @@ class RoundedWindow extends StatelessWidget {
                                   child: Text(
                                     title,
                                     style: TextStyle(
-                                        fontSize: 20, color: Colors.white),
+                                        fontSize: 20, color: Colors.black),
                                   ),
                                 ),
-                                InkWell(
-                                  child: Icon(Icons.close),
-                                  onTap: () {
-                                    Navigator.pop(context);
-                                  },
-                                )
+                                CloseButtonx()
                               ],
                             ),
+                            Divider()
                           ],
                         ),
                       ))),
-              body: body,
+              body: Padding(
+                padding: EdgeInsets.only(top: 20),
+                child: body,
+              ),
             )),
       ],
     );
@@ -80,8 +84,8 @@ class RoundedWindow extends StatelessWidget {
         padding: EdgeInsets.only(left: 300, right: 200, bottom: 40),
         child: Dialog(
           shape: RoundedRectangleBorder(
-              //borderRadius: BorderRadius.circular(Consts.padding),
-              ),
+            borderRadius: BorderRadius.circular(Consts.padding),
+          ),
           elevation: 0.0,
           backgroundColor: Colors.transparent,
           child: dialogContent(context),

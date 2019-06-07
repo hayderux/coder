@@ -1,7 +1,12 @@
+import 'package:coder/components/close_button.dart';
 import 'package:coder/components/rounded_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' as prefix0;
+import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:rounded_modal/rounded_modal.dart';
+
+import 'c_dialog.dart';
 
 class BottomBar extends StatelessWidget {
   final TabController controller;
@@ -68,6 +73,7 @@ class BottomBar extends StatelessWidget {
                 showRoundedModalBottomSheet(
                     radius: 15,
                     context: context,
+                    dismissOnTap: false,
                     color: Theme.of(context).scaffoldBackgroundColor,
                     builder: (buildContext) {
                       return Padding(
@@ -109,7 +115,7 @@ class BottomBar extends StatelessWidget {
                                       ],
                                     ),
                                   ),
-                                  Container(child: CloseButton()),
+                                  Container(child: CloseButtonx()),
                                 ],
                               ),
                               Divider()
@@ -122,7 +128,46 @@ class BottomBar extends StatelessWidget {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[bottomicon(FontAwesomeIcons.solidBell, () {})],
+              children: <Widget>[
+                bottomicon(FontAwesomeIcons.solidBell, () {
+                  showDialogF(
+                      context: context,
+                      barrierDismissible: true,
+                      builder: (buildContext) {
+                        return DialogFork(
+                          alignment: Alignment.bottomRight,
+                          elevation: 6.0,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: Container(
+                              height: 450,
+                              width: 400,
+                              child: Padding(
+                                padding: EdgeInsets.only(
+                                    top: 10, left: 10, right: 10),
+                                child: ListView(
+                                  physics: NeverScrollableScrollPhysics(),
+                                  children: <Widget>[
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: <Widget>[
+                                        Text(
+                                          'Notifications',
+                                          style: TextStyle(fontSize: 20),
+                                        ),
+                                        CloseButtonx()
+                                      ],
+                                    ),
+                                    Divider()
+                                  ],
+                                ),
+                              )),
+                        );
+                      });
+                })
+              ],
             )
           ],
         ),

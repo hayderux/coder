@@ -4,6 +4,7 @@ import 'package:coder/style/themebloc.dart';
 import 'actvitybar/list.dart';
 import 'actvitybar/sidebar.dart';
 import 'bottombar/bottom_bar.dart';
+import 'core/file_view.dart';
 
 class HomePage extends StatefulWidget {
   final ThemeBloc themeBloc;
@@ -23,11 +24,12 @@ class _HomeState extends State<HomePage> with TickerProviderStateMixin {
 
   Widget _buildList() {
     return ListView.builder(
+        physics: NeverScrollableScrollPhysics(),
         itemBuilder: (BuildContext context, int i) {
           return Padding(
             padding: EdgeInsets.only(top: 30),
             child: ListTile(
-              leading: Icon(list[i].icon, size: 36, color: Colors.white),
+              leading: Icon(list[i].icon, size: 35, color: Colors.white),
               selected: i == currentIdx,
               onTap: () {
                 setState(() {
@@ -54,7 +56,6 @@ class _HomeState extends State<HomePage> with TickerProviderStateMixin {
                   decoration: BoxDecoration(
                     color: Color(0xff333333),
                   ),
-                  //child: _buildList()
                   child: SideBar(
                     themeBloc: widget.themeBloc,
                     body: _buildList(),
@@ -75,7 +76,9 @@ class _HomeState extends State<HomePage> with TickerProviderStateMixin {
               ),
             ),
             Expanded(
-              child: Container(),
+              child: Container(
+                child: FileView(),
+              ),
             )
           ],
         ));
