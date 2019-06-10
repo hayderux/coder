@@ -1,6 +1,6 @@
 import 'package:coder/components/custom_dialog.dart';
-import 'package:coder/components/major_tab.dart';
 import 'package:coder/core/env.dart';
+import 'package:coder/tab_group/tab_group.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -11,13 +11,14 @@ class FileView extends StatefulWidget {
 
 class _FileViewState extends State<FileView> with TickerProviderStateMixin {
   TabController controller;
+  int currtab = 0;
   void initState() {
     super.initState();
     initTab();
   }
 
   void initTab() async {
-    controller = TabController(vsync: this, length: 3, initialIndex: 0);
+    controller = TabController(vsync: this, length: 2, initialIndex: currtab);
   }
 
   @override
@@ -27,12 +28,27 @@ class _FileViewState extends State<FileView> with TickerProviderStateMixin {
           preferredSize: Size.fromHeight(60),
           child: AppBar(
             elevation: 1.0,
-            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+            backgroundColor: Colors.grey.shade200,
+            //backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             centerTitle: false,
-            title: Flightbar(
-              controllerx: controller,
-            ),
+
             actions: <Widget>[
+              IconButton(
+                hoverColor: Colors.transparent,
+                splashColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                icon: Icon(
+                  FontAwesomeIcons.th,
+                  color: Theme.of(context).iconTheme.color,
+                ),
+                onPressed: () {
+                  if (controller.index == 0) {
+                    controller.animateTo((controller.index + 1) % 2);
+                  } else {
+                    controller.animateTo((controller.index - 1) % 2);
+                  }
+                },
+              ), //
               IconButton(
                 hoverColor: Colors.transparent,
                 splashColor: Colors.transparent,
@@ -64,41 +80,40 @@ class _FileViewState extends State<FileView> with TickerProviderStateMixin {
               )
             ],
           )),
+      //body: TabGroup(),
       body: TabBarView(
-        physics: NeverScrollableScrollPhysics(),
         controller: controller,
         children: <Widget>[
           Container(
-            child: Container(
-              height: 200,
-              padding: EdgeInsets.all(10.0),
-              child: new ConstrainedBox(
-                constraints: BoxConstraints(
-                  maxHeight: double.infinity,
-                ),
-                child: new Scrollbar(
-                  child: new SingleChildScrollView(
-                    physics: NeverScrollableScrollPhysics(),
-                    scrollDirection: Axis.vertical,
-                    reverse: true,
-                    child: SizedBox(
-                      child: new TextField(
-                        maxLines: 50,
-                        decoration: new InputDecoration(
-                          border: InputBorder.none,
-                          hintText: 'Add your text here',
-                        ),
+              child: Container(
+            color: Colors.white,
+            padding: EdgeInsets.all(10.0),
+            child: new ConstrainedBox(
+              constraints: BoxConstraints(
+                maxHeight: double.infinity,
+              ),
+              child: new Scrollbar(
+                child: new SingleChildScrollView(
+                  physics: NeverScrollableScrollPhysics(),
+                  scrollDirection: Axis.vertical,
+                  reverse: true,
+                  child: SizedBox(
+                    child: new TextField(
+                      maxLines: 50,
+                      decoration: new InputDecoration(
+                        border: InputBorder.none,
+                        hintText: 'Add your text here',
                       ),
                     ),
                   ),
                 ),
               ),
             ),
-          ),
-          Container(),
-          Container()
+          )),
+          TabGroup()
         ],
       ),
+      //body*/
     );
   }
 }

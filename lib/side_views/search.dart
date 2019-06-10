@@ -1,3 +1,4 @@
+import 'package:coder/style/xd.dart';
 import 'package:flutter/material.dart';
 
 
@@ -10,38 +11,42 @@ class _SearchVState extends State<SearchV> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey.shade200,
       appBar: AppBar(
-        title: Text('Search'),
-        automaticallyImplyLeading: false,
-        centerTitle: false,
+        elevation: 0.0,
+        backgroundColor: Colors.transparent,
+        title: Text(
+          'Search',
+          style: Theme.of(context).textTheme.title,
+        ),
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.refresh),
-            onPressed: (){},
-          ),
-          IconButton(
-            icon: Icon(Icons.clear_all),
-            onPressed: (){},
+            icon: Icon(
+              Icons.refresh,
+              color: Theme.of(context).iconTheme.color,
+            ),
+            onPressed: () {},
           )
         ],
       ),
       body: Column(
         children: <Widget>[
           Container(
-            margin: EdgeInsets.only(left: 10,top: 20,right: 10),
-            color: Colors.grey.shade700,
-            height: 50,
-            child: Padding(
-              padding: EdgeInsets.only(left: 10),
-              child: TextField(
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                hintText: 'Search',
-                icon: Icon(Icons.search)
-              ),
-            ),
-            )
-          )
+              margin: EdgeInsets.only(left: 10, top: 20, right: 10),
+              height: 50,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  boxShadow: boxShadow,
+                  borderRadius: BorderRadius.circular(10)),
+              child: Padding(
+                padding: EdgeInsets.only(left: 10),
+                child: TextField(
+                  decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: 'Search',
+                      icon: Icon(Icons.search)),
+                ),
+              ))
         ],
       ),
     );

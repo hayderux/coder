@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:coder/style/xd.dart';
 
 class ExplorerV extends StatefulWidget {
   @override
@@ -11,9 +12,31 @@ class _ExplorerVState extends State<ExplorerV> {
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
       appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: Text('Explorer'),
-        centerTitle: false,
+        elevation: 0.0,
+        backgroundColor: Colors.transparent,
+        title: Text(
+          'Explorer',
+          style: Theme.of(context).textTheme.title,
+        ),
+      ),
+      body: ListView(
+        physics: NeverScrollableScrollPhysics(),
+        children: <Widget>[
+          Container(
+            height: 50.0,
+            margin: EdgeInsets.only(left: 10, top: 20, right: 10),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Theme.of(context).primaryColor,
+                boxShadow: boxShadow),
+            child: Center(
+              child: Text(
+                'Open Folder',
+                style: TextStyle(color: Colors.white, fontSize: 18),
+              ),
+            ),
+          )
+        ],
       ),
     );
   }

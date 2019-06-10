@@ -24,7 +24,10 @@ var lightTheme = ThemeData(
   scaffoldBackgroundColor: Colors.white,
   platform: TargetPlatform.android,
   primaryColor: Color(0xff007ACC),
-  textTheme: TextTheme(title: TextStyle(color: Colors.black)),
+  textTheme: TextTheme(
+      title: TextStyle(
+          color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold)),
+  primaryIconTheme: IconThemeData(color: Colors.black),
   tabBarTheme: TabBarTheme(
     labelColor: Colors.black,
     labelStyle: TextStyle(fontFamily: 'sf'),

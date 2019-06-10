@@ -10,7 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  mobile_sidebar: ^1.6.0
+  
 
   
   cupertino_icons: ^0.1.2
@@ -24,6 +24,11 @@ dependencies:
   flutter_swiper: ^1.1.5
   scoped_model: ^1.0.1
   rxdart: ^0.21.0
+  breakpoint: ^1.0.0
+  auto_size_text: ^1.1.2
+  localstorage: ^2.0.0
+
+
   
 dev_dependencies:
   flutter_test:

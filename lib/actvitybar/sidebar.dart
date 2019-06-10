@@ -1,15 +1,12 @@
 import 'package:coder/components/custom_dialog.dart';
-import 'package:coder/components/rounded_window.dart';
 import 'package:flutter/material.dart';
 
-import 'package:coder/style/themebloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:coder/core/settings.dart';
 
 class SideBar extends StatefulWidget {
   final Widget body;
-  final ThemeBloc themeBloc;
-  const SideBar({Key key, this.body, this.themeBloc}) : super(key: key);
+  const SideBar({Key key, this.body}) : super(key: key);
   @override
   State<StatefulWidget> createState() {
     return SideState();

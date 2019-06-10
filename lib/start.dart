@@ -1,5 +1,5 @@
+import 'package:coder/style/xd.dart';
 import 'package:flutter/material.dart';
-import 'package:coder/style/themebloc.dart';
 
 import 'actvitybar/list.dart';
 import 'actvitybar/sidebar.dart';
@@ -7,9 +7,6 @@ import 'bottombar/bottom_bar.dart';
 import 'core/file_view.dart';
 
 class HomePage extends StatefulWidget {
-  final ThemeBloc themeBloc;
-
-  const HomePage({Key key, this.themeBloc}) : super(key: key);
   @override
   _HomeState createState() => _HomeState();
 }
@@ -57,7 +54,6 @@ class _HomeState extends State<HomePage> with TickerProviderStateMixin {
                     color: Color(0xff333333),
                   ),
                   child: SideBar(
-                    themeBloc: widget.themeBloc,
                     body: _buildList(),
                   )),
             ),
@@ -66,18 +62,12 @@ class _HomeState extends State<HomePage> with TickerProviderStateMixin {
               child: list[currentIdx].builder(context),
               decoration: BoxDecoration(
                 color: Colors.grey.shade200,
-                boxShadow: <BoxShadow>[
-                  new BoxShadow(
-                    color: Colors.black12,
-                    blurRadius: 12.0,
-                    offset: new Offset(0.0, 10.0),
-                  ),
-                ],
               ),
             ),
             Expanded(
               child: Container(
                 child: FileView(),
+                decoration: BoxDecoration(boxShadow: boxShadow),
               ),
             )
           ],

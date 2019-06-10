@@ -7,40 +7,6 @@ class CustomDialog extends StatelessWidget {
   final String title;
   final double height;
   CustomDialog({@required this.title, this.height, this.body});
-  dialogContent(BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        Container(
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(30)),
-          child: Container(
-            margin: EdgeInsets.only(top: 15, bottom: 15, left: 5, right: 5),
-            height: height,
-            child: Column(
-              children: <Widget>[
-                AppBar(
-                    elevation: 0.0,
-                    title: Text(
-                      title,
-                      style: Theme.of(context).textTheme.title,
-                    ),
-                    centerTitle: false,
-                    actions: <Widget>[CloseButtonx()],
-                    automaticallyImplyLeading: false,
-                    backgroundColor: Theme.of(context).dialogBackgroundColor),
-                Divider(),
-              ],
-            ),
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.only(top: 100),
-          child: Scaffold(
-            body: body,
-          ),
-        )
-      ],
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +18,7 @@ class CustomDialog extends StatelessWidget {
               borderRadius: BorderRadius.circular(15),
             ),
             elevation: 6.0,
-            //child: dialogContent(context),
+            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             child: Padding(
               padding: EdgeInsets.only(top: 15, bottom: 10, left: 5, right: 5),
               child: Container(
@@ -61,6 +27,7 @@ class CustomDialog extends StatelessWidget {
                 child: Container(
                   height: height,
                   child: Scaffold(
+                    //backgroundColor: Theme.of(context).scaffoldBackgroundColor,
                     appBar: PreferredSize(
                       preferredSize: Size.fromHeight(90),
                       child: Column(
@@ -75,7 +42,7 @@ class CustomDialog extends StatelessWidget {
                               actions: <Widget>[CloseButtonx()],
                               automaticallyImplyLeading: false,
                               backgroundColor:
-                                  Theme.of(context).dialogBackgroundColor),
+                                  Theme.of(context).scaffoldBackgroundColor),
                           Divider()
                         ],
                       ),

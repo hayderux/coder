@@ -1,4 +1,3 @@
-import 'package:coder/style/xd.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -12,9 +11,9 @@ class _EnvState extends State<Env> {
     return InkWell(
       borderRadius: BorderRadius.circular(10),
       child: Container(
-        height: 300,
-        width: 300,
-        margin: EdgeInsets.only(left: 10, right: 10),
+        height: 100,
+        width: 250,
+        margin: EdgeInsets.only(left: 10, right: 10, bottom: 10),
         decoration: BoxDecoration(
             //color: Colors.white,
             //boxShadow: boxShadow,
@@ -31,8 +30,12 @@ class _EnvState extends State<Env> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return GridView.count(
+      crossAxisCount: 4,
+      crossAxisSpacing: 1,
+      physics: NeverScrollableScrollPhysics(),
+      padding: EdgeInsets.only(left: 10, bottom: 20, right: 10),
+      scrollDirection: Axis.vertical,
       children: <Widget>[
         envcontainer(FontAwesomeIcons.terminal, Colors.black),
         envcontainer(FontAwesomeIcons.windows, Colors.blue.shade800),
