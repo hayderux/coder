@@ -10,8 +10,9 @@ class _ExplorerVState extends State<ExplorerV> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade200,
+      backgroundColor: Theme.of(context).cardColor,
       appBar: AppBar(
+        centerTitle: false,
         elevation: 0.0,
         backgroundColor: Colors.transparent,
         title: Text(
@@ -28,7 +29,7 @@ class _ExplorerVState extends State<ExplorerV> {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 color: Theme.of(context).primaryColor,
-                boxShadow: boxShadow),
+                boxShadow: boxShadow2),
             child: Center(
               child: Text(
                 'Open Folder',

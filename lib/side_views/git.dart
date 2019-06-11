@@ -10,8 +10,9 @@ class _GitVState extends State<GitV> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade200,
+      backgroundColor: Theme.of(context).cardColor,
       appBar: AppBar(
+        centerTitle: false,
         elevation: 0.0,
         backgroundColor: Colors.transparent,
         title: Text(
@@ -27,7 +28,7 @@ class _GitVState extends State<GitV> {
               margin: EdgeInsets.only(left: 10, top: 20, right: 10),
               height: 50,
               decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Theme.of(context).scaffoldBackgroundColor,
                   boxShadow: boxShadow,
                   borderRadius: BorderRadius.circular(10)),
               child: Padding(

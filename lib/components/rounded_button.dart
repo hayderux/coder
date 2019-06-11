@@ -1,3 +1,4 @@
+import 'package:coder/style/xd.dart';
 import 'package:flutter/material.dart';
 
 
@@ -20,13 +21,7 @@ class RoundedButton extends StatelessWidget {
          color: Theme.of(context).primaryColor,
          
          borderRadius: BorderRadius.circular(30),
-         boxShadow: <BoxShadow>[
-        new BoxShadow(  
-         color: Colors.black12,
-          blurRadius: 12.0,
-         offset: new Offset(0.0, 10.0),
-       ),
-      ],
+         boxShadow: boxShadow
        ),
        child: Padding(
          padding: EdgeInsets.only(left: 20,right: 20,),

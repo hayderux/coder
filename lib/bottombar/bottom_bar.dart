@@ -1,5 +1,6 @@
 import 'package:coder/components/close_button.dart';
 import 'package:coder/components/rounded_button.dart';
+import 'package:coder/style/xd.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -128,6 +129,75 @@ class BottomBar extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
+                FlatButton(
+                  child: Text('Dart'),
+                  onPressed: () {
+                    showDialogF(
+                        context: context,
+                        barrierDismissible: true,
+                        builder: (buildContext) {
+                          return DialogFork(
+                              alignment: Alignment.topCenter,
+                              elevation: 6.0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              child: Container(
+                                height: 800,
+                                width: 800,
+                                child: Padding(
+                                    padding: EdgeInsets.only(
+                                        top: 10, left: 10, right: 10),
+                                    child: Scrollbar(
+                                        child: SingleChildScrollView(
+                                      reverse: false,
+                                      physics: NeverScrollableScrollPhysics(),
+                                      scrollDirection: Axis.vertical,
+                                      child: Column(
+                                        children: <Widget>[
+                                          Container(
+                                              margin: EdgeInsets.only(
+                                                  left: 10, top: 20, right: 10),
+                                              height: 50,
+                                              decoration: BoxDecoration(
+                                                  color: Theme.of(context)
+                                                      .cardColor,
+                                                  boxShadow: boxShadow2,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          10)),
+                                              child: Padding(
+                                                padding:
+                                                    EdgeInsets.only(left: 10),
+                                                child: TextField(
+                                                  cursorColor: Colors.black,
+                                                  autocorrect: true,
+                                                  decoration: InputDecoration(
+                                                      border: InputBorder.none,
+                                                      hintText: 'Search',
+                                                      fillColor: Colors.black,
+                                                      focusColor: Colors.black,
+                                                      hoverColor: Colors.black,
+                                                      icon: Icon(
+                                                        Icons.search,
+                                                      )),
+                                                ),
+                                              )),
+                                          SizedBox(
+                                            height: 20,
+                                          ),
+                                          ListTile(
+                                            leading:
+                                                Icon(FontAwesomeIcons.java),
+                                            title: Text('Java'),
+                                          ),
+                                        ],
+                                      ),
+                                    ))),
+                              ));
+                        });
+                  },
+                ),
                 bottomicon(FontAwesomeIcons.solidBell, () {
                   showDialogF(
                       context: context,

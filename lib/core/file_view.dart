@@ -28,10 +28,7 @@ class _FileViewState extends State<FileView> with TickerProviderStateMixin {
           preferredSize: Size.fromHeight(60),
           child: AppBar(
             elevation: 1.0,
-            backgroundColor: Colors.grey.shade200,
-            //backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             centerTitle: false,
-
             actions: <Widget>[
               IconButton(
                 hoverColor: Colors.transparent,
@@ -86,7 +83,7 @@ class _FileViewState extends State<FileView> with TickerProviderStateMixin {
         children: <Widget>[
           Container(
               child: Container(
-            color: Colors.white,
+            color: Theme.of(context).scaffoldBackgroundColor,
             padding: EdgeInsets.all(10.0),
             child: new ConstrainedBox(
               constraints: BoxConstraints(

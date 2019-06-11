@@ -1,7 +1,6 @@
 import 'package:coder/style/xd.dart';
 import 'package:flutter/material.dart';
 
-
 class SearchV extends StatefulWidget {
   @override
   _SearchVState createState() => _SearchVState();
@@ -11,8 +10,9 @@ class _SearchVState extends State<SearchV> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade200,
+      backgroundColor: Theme.of(context).cardColor,
       appBar: AppBar(
+        centerTitle: false,
         elevation: 0.0,
         backgroundColor: Colors.transparent,
         title: Text(
@@ -35,7 +35,7 @@ class _SearchVState extends State<SearchV> {
               margin: EdgeInsets.only(left: 10, top: 20, right: 10),
               height: 50,
               decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Theme.of(context).scaffoldBackgroundColor,
                   boxShadow: boxShadow,
                   borderRadius: BorderRadius.circular(10)),
               child: Padding(

@@ -29,7 +29,7 @@ class CustomDialog extends StatelessWidget {
                   child: Scaffold(
                     //backgroundColor: Theme.of(context).scaffoldBackgroundColor,
                     appBar: PreferredSize(
-                      preferredSize: Size.fromHeight(90),
+                      preferredSize: Size.fromHeight(80),
                       child: Column(
                         children: <Widget>[
                           AppBar(
@@ -40,7 +40,7 @@ class CustomDialog extends StatelessWidget {
                               ),
                               centerTitle: false,
                               actions: <Widget>[CloseButtonx()],
-                              automaticallyImplyLeading: false,
+                              automaticallyImplyLeading: true,
                               backgroundColor:
                                   Theme.of(context).scaffoldBackgroundColor),
                           Divider()

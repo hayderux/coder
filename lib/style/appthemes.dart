@@ -6,9 +6,10 @@ class Apptheme {
   static final ThemeData lightTheme = ThemeData(
     //light theme
     brightness: Brightness.light,
-    dividerColor: Colors.black,
     scaffoldBackgroundColor: Colors.white,
-    platform: TargetPlatform.android,
+    platform: TargetPlatform.iOS,
+    appBarTheme: AppBarTheme(color: Colors.grey.shade200),
+    cardColor: Colors.grey.shade200,
     primaryColor: Color(0xff007ACC),
     textTheme: TextTheme(
         title: TextStyle(
@@ -26,13 +27,17 @@ class Apptheme {
   );
 
   static final ThemeData darkTheme = ThemeData(
-    dividerColor: Colors.white,
     brightness: Brightness.dark,
-    platform: TargetPlatform.android,
+    platform: TargetPlatform.iOS,
     bottomAppBarTheme: BottomAppBarTheme(color: Color(0xff333333)),
-    scaffoldBackgroundColor: Color(0xff252527),
+    scaffoldBackgroundColor: Color(0xff1E1E1E),
+    accentColor: Color(0xff007ACC),
+    appBarTheme: AppBarTheme(color: Color(0xff252527)),
+    cardColor: Color(0xff252527),
     primaryColor: Color(0xff007ACC),
-    textTheme: TextTheme(title: TextStyle(color: Colors.white)),
+    textTheme: TextTheme(
+        title: TextStyle(
+            color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold)),
     tabBarTheme: TabBarTheme(
         labelColor: Colors.white,
         labelStyle: TextStyle(fontFamily: 'sf'),

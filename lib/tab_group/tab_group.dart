@@ -18,7 +18,7 @@ class _TabGroupState extends State<TabGroup> {
           width: 300,
           margin: EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 10),
           decoration: BoxDecoration(
-              color: Colors.white,
+              color: Theme.of(context).scaffoldBackgroundColor,
               boxShadow: boxShadow,
               borderRadius: BorderRadius.circular(10)),
           child: Column(
