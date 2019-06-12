@@ -11,6 +11,7 @@ class SettingView extends StatefulWidget {
 
 class _SettingViewState extends State<SettingView> {
   int currentIdx = 0;
+  
   Widget _buildList() {
     return ListView.builder(
         physics: NeverScrollableScrollPhysics(),

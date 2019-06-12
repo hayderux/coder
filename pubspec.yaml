@@ -40,15 +40,7 @@ flutter:
 
 
   uses-material-design: true
-  assets:
-    - assets/10.png
-    - assets/playicon.png
-    - assets/vscode.png
-    - assets/btc.jpg
-    - assets/eth.jpg
-    - assets/ltc.jpg
-    - assets/wechat.jpg
-    - assets/paypal.jpg
+  
 
   fonts:
 

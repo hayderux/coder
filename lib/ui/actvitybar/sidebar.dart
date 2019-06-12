@@ -1,6 +1,6 @@
-import 'package:coder/bottombar/c_dialog.dart';
 import 'package:coder/components/custom_dialog.dart';
-import 'package:coder/settings/settings.dart';
+import 'package:coder/ui/bottombar/c_dialog.dart';
+import 'package:coder/ui/settings/settings.dart';
 import 'package:flutter/material.dart';
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';

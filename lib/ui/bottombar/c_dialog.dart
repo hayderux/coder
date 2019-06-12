@@ -33,7 +33,7 @@ class DialogFork extends StatelessWidget {
     Key key,
     this.backgroundColor,
     this.elevation,
-    this.alignment,
+    @required this.alignment,
     this.insetAnimationDuration = const Duration(milliseconds: 100),
     this.insetAnimationCurve = Curves.decelerate,
     this.shape,

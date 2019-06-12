@@ -1,8 +1,9 @@
 import 'package:coder/components/custom_dialog.dart';
-import 'package:coder/core/env.dart';
-import 'package:coder/tab_group/tab_group.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import 'env.dart';
+import 'tab_group/tab_group.dart';
 
 class FileView extends StatefulWidget {
   @override
@@ -91,9 +92,10 @@ class _FileViewState extends State<FileView> with TickerProviderStateMixin {
               ),
               child: new Scrollbar(
                 child: new SingleChildScrollView(
+
                   physics: NeverScrollableScrollPhysics(),
                   scrollDirection: Axis.vertical,
-                  reverse: true,
+                  reverse: false,
                   child: SizedBox(
                     child: new TextField(
                       maxLines: 50,

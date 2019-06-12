@@ -17,6 +17,7 @@ class _ApperanceVState extends State<ApperanceV> {
   @override
   Widget build(BuildContext context) {
     return ListView(
+      physics: NeverScrollableScrollPhysics(),
       padding: EdgeInsets.only(left: 10, right: 10),
       children: <Widget>[
         SizedBox(height: 30),
@@ -50,8 +51,15 @@ class _ApperanceVState extends State<ApperanceV> {
           ),
         ),
         SettingOption(
-          title: 'Font Size',
-          trailing: Row(),
+          title: 'Acrylic',
+          trailing: Switch.adaptive(
+            value: false,
+            onChanged: (onchaned) {
+              setState(() {
+                onchaned = true;
+              });
+            },
+          ),
         )
       ],
     );

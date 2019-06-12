@@ -28,25 +28,21 @@ class CustomDialog extends StatelessWidget {
                   height: height,
                   child: Scaffold(
                     //backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-                    appBar: PreferredSize(
-                      preferredSize: Size.fromHeight(80),
-                      child: Column(
-                        children: <Widget>[
-                          AppBar(
-                              elevation: 0.0,
-                              title: Text(
-                                title,
-                                style: Theme.of(context).textTheme.title,
-                              ),
-                              centerTitle: false,
-                              actions: <Widget>[CloseButtonx()],
-                              automaticallyImplyLeading: true,
-                              backgroundColor:
-                                  Theme.of(context).scaffoldBackgroundColor),
-                          Divider()
-                        ],
-                      ),
-                    ),
+                    appBar: AppBar(
+                        elevation: 0.0,
+                        title: Text(
+                          title,
+                          style: Theme.of(context).textTheme.title,
+                        ),
+                        centerTitle: false,
+                        actions: <Widget>[CloseButtonx()],
+                        bottom: PreferredSize(
+                          preferredSize: Size.fromHeight(10),
+                          child: Divider(),
+                        ),
+                        automaticallyImplyLeading: false,
+                        backgroundColor:
+                            Theme.of(context).scaffoldBackgroundColor),
                     body: body,
                   ),
                 ),

@@ -1,7 +1,7 @@
+import 'package:coder/ui/sidebar/explorer.dart';
+import 'package:coder/ui/sidebar/git.dart';
+import 'package:coder/ui/sidebar/search.dart';
 import 'package:flutter/material.dart';
-import 'package:coder/side_views/explorer.dart';
-import 'package:coder/side_views/git.dart';
-import 'package:coder/side_views/search.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Sideitem {

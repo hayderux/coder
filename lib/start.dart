@@ -1,10 +1,11 @@
 import 'package:coder/style/xd.dart';
 import 'package:flutter/material.dart';
 
-import 'actvitybar/list.dart';
-import 'actvitybar/sidebar.dart';
-import 'bottombar/bottom_bar.dart';
-import 'core/file_view.dart';
+import 'ui/actvitybar/list.dart';
+import 'ui/actvitybar/sidebar.dart';
+import 'ui/bottombar/bottom_bar.dart';
+import 'ui/topbar/file_view.dart';
+
 
 class HomePage extends StatefulWidget {
   @override
