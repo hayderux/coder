@@ -1,9 +1,10 @@
-import 'package:coder/style/xd.dart' as prefix0;
+import 'package:coder/components/Fork_dialog.dart';
+import 'package:coder/components/custom_dialog.dart';
 import 'package:coder/ui/bottombar/bottom_bar.dart';
 import 'package:coder/ui/editor/editor.dart';
+import 'package:coder/ui/topbar/tab_group/tab_group.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/font_awesome.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'env.dart';
 
 class FileView extends StatefulWidget {
   @override
@@ -42,53 +43,66 @@ class _FileViewState extends State<FileView> with TickerProviderStateMixin {
               child: Scrollbar(
                 child: Scaffold(
                   backgroundColor: Colors.transparent,
-                  appBar: AppBar(
-                    elevation: 0.0,
-                    backgroundColor: Theme.of(context).bottomAppBarColor,
-                    centerTitle: false,
-                    title: ListView(
-                      scrollDirection: Axis.horizontal,
-                      children: <Widget>[
-                        Container(
-                            margin:
-                                EdgeInsets.only(right: 20, bottom: 10, top: 10),
-                            height: 35,
-                            width: 200,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(25),
-                                boxShadow: prefix0.boxShadow,
-                                color: Colors.grey.withOpacity(0.6)),
-                            child: Padding(
-                              padding: EdgeInsets.only(
-                                  left: 10, bottom: 10, right: 10),
-                              child: Row(
-                                children: <Widget>[
-                                  Icon(FontAwesomeIcons.java),
-                                  Padding(
-                                    padding:
-                                        EdgeInsets.only(top: 4, left: 10),
-                                    child: Text('main.dart'),
-                                  )
-                                ],
-                              ),
-                            ))
+                  appBar: PreferredSize(
+                    preferredSize: Size.fromHeight(70),
+                    child: AppBar(
+                      elevation: 0.0,
+                      backgroundColor: Colors.transparent,
+                      centerTitle: false,
+                      actions: <Widget>[
+                        IconButton(
+                          icon: Icon(
+                            Icons.tab,
+                            color: Theme.of(context).iconTheme.color,
+                          ),
+                          onPressed: () {
+                            if (controller.index == 0) {
+                              controller.animateTo((controller.index + 1) % 2);
+                            } else {
+                              controller.animateTo((controller.index - 1) % 2);
+                            }
+                          },
+                        ), //
+                        IconButton(
+                          icon: Icon(
+                            Icons.laptop_mac,
+                            color: Theme.of(context).iconTheme.color,
+                          ),
+                          onPressed: () {
+                            showDialogF(
+                                context: context,
+                                barrierDismissible: false,
+                                builder: (buildContext) {
+                                  return CustomDialog(
+                                    title: 'Env',
+                                    height: 500,
+                                    body: Env(),
+                                  );
+                                });
+                          },
+                        ),
+                        IconButton(
+                          icon: Icon(Icons.more_horiz,
+                              color: Theme.of(context).iconTheme.color),
+                          onPressed: () {},
+                        ),
                       ],
                     ),
-                    actions: <Widget>[
-                      Container(
-                        margin: EdgeInsets.only(right: 20),
-                        height: 30,
-                        width: 30,
-                        child: Icon(Icons.play_arrow),
-                        decoration: BoxDecoration(
-                            boxShadow: prefix0.boxShadow,
-                            shape: BoxShape.circle,
-                            color: Colors.grey),
-                      )
-                    ],
                   ),
                   body: Container(
-                    child: EditorView(),
+                    child: EditorView(
+                      body: TabBarView(
+                        controller: controller,
+                        children: <Widget>[
+                          Container(),
+                          TabGroup(
+                            ontap: () {
+                              controller.animateTo(0);
+                            },
+                          )
+                        ],
+                      ),
+                    ),
                     decoration: BoxDecoration(
                         color: Theme.of(context).scaffoldBackgroundColor,
                         borderRadius: BorderRadius.only(

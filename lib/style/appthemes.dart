@@ -30,7 +30,7 @@ class Apptheme {
   );
 
   static final ThemeData darkTheme = ThemeData(
-    hoverColor: Colors.transparent, 
+    hoverColor: Colors.transparent,
     splashColor: Colors.transparent,
     highlightColor: Colors.transparent,
     brightness: Brightness.dark,
@@ -60,7 +60,7 @@ class Apptheme {
       case MyThemeKeys.DARK:
         return darkTheme;
       default:
-        return lightTheme;
+        return darkTheme;
     }
   }
 }

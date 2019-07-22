@@ -1,3 +1,4 @@
+import 'package:coder/style/appthemes.dart';
 import 'package:flutter/material.dart';
 import '../shell.dart';
 import '../style/changetheme.dart';
@@ -15,7 +16,7 @@ class MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'VSCODE',
       debugShowCheckedModeBanner: false,
-      theme: CustomTheme.of(context),
+      theme: Apptheme.darkTheme,
       home: Material(
         child: ShellView(),
       ),

@@ -9,6 +9,7 @@ class Env extends StatefulWidget {
 class _EnvState extends State<Env> {
   Widget envcontainer(IconData icon, Color color) {
     return InkWell(
+      hoverColor: Colors.grey,
       borderRadius: BorderRadius.circular(10),
       child: Container(
         height: 100,

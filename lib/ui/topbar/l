@@ -1,0 +1,33 @@
+AppBar(
+                    elevation: 0.0,
+                    backgroundColor: Theme.of(context).bottomAppBarColor,
+                    centerTitle: false,
+                    title: ListView(
+                      scrollDirection: Axis.horizontal,
+                      children: <Widget>[
+                        Container(
+                            margin:
+                                EdgeInsets.only(right: 20, bottom: 10, top: 10),
+                            height: 35,
+                            width: 200,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(25),
+                                boxShadow: prefix0.boxShadow,
+                                color: Colors.grey.withOpacity(0.6)),
+                            child: Padding(
+                              padding: EdgeInsets.only(
+                                  left: 10, bottom: 10, right: 10),
+                              child: Row(
+                                children: <Widget>[
+                                  Icon(FontAwesomeIcons.java),
+                                  Padding(
+                                    padding: EdgeInsets.only(top: 4, left: 10),
+                                    child: Text('main.dart'),
+                                  )
+                                ],
+                              ),
+                            ))
+                      ],
+                    ),
+                    
+                  ),

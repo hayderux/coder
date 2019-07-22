@@ -1,12 +1,21 @@
+import 'package:coder/ui/topbar/tab_group/tab_group.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class EditorView extends StatefulWidget {
+  final Widget body;
+
+  const EditorView({Key key, this.body}) : super(key: key);
   @override
   _EditorViewState createState() => _EditorViewState();
 }
 
-class _EditorViewState extends State<EditorView> {
+class _EditorViewState extends State<EditorView> with TickerProviderStateMixin {
+  TabController controller;
+  void initState() {
+    super.initState();
+    controller = TabController(length: 2, vsync: this, initialIndex: 0);
+  }
+
   var _tapPosition;
   void _showCustomMenu() {
     final RenderBox overlay = Overlay.of(context).context.findRenderObject();
@@ -112,9 +121,9 @@ class _EditorViewState extends State<EditorView> {
         child: Scaffold(
           backgroundColor: Colors.transparent,
           body: InkWell(
-            onLongPress: _showCustomMenu,
-            onTapDown: _storePosition,
-          ),
+              onLongPress: _showCustomMenu,
+              onTapDown: _storePosition,
+              child: widget.body),
         ));
   }
 }

@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class TabGroup extends StatefulWidget {
+  final VoidCallback ontap;
+
+  const TabGroup({Key key, @required this.ontap}) : super(key: key);
   @override
   _TabGroupState createState() => _TabGroupState();
 }
@@ -11,11 +14,11 @@ class TabGroup extends StatefulWidget {
 class _TabGroupState extends State<TabGroup> {
   Widget tabcontainer() {
     return InkWell(
-        onTap: () {},
+        onTap: widget.ontap,
         borderRadius: BorderRadius.circular(10),
         child: Container(
-          height: 300,
-          width: 300,
+          height: 250,
+          width: 250,
           margin: EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 10),
           decoration: BoxDecoration(
               color: Theme.of(context).scaffoldBackgroundColor,
@@ -68,7 +71,7 @@ class _TabGroupState extends State<TabGroup> {
           ),
           GridView.count(
             shrinkWrap: true,
-            crossAxisCount: 4,
+            crossAxisCount: 5,
             crossAxisSpacing: 1,
             childAspectRatio: 1,
             physics: NeverScrollableScrollPhysics(),
