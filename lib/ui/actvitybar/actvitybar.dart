@@ -1,20 +1,20 @@
+import 'package:coder/components/Fork_dialog.dart';
 import 'package:coder/components/custom_dialog.dart';
-import 'package:coder/ui/bottombar/c_dialog.dart';
 import 'package:coder/ui/settings/settings.dart';
 import 'package:flutter/material.dart';
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class SideBar extends StatefulWidget {
+class ActvityBar extends StatefulWidget {
   final Widget body;
-  const SideBar({Key key, this.body}) : super(key: key);
+  const ActvityBar({Key key, this.body}) : super(key: key);
   @override
   State<StatefulWidget> createState() {
-    return SideState();
+    return ActvityBarState();
   }
 }
 
-class SideState extends State<SideBar> {
+class ActvityBarState extends State<ActvityBar> {
   InkWell bottomicon(IconData icon, VoidCallback onTap) {
     return InkWell(
       splashColor: Colors.transparent,

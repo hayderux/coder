@@ -1,7 +1,6 @@
-import 'package:coder/start.dart';
 import 'package:flutter/material.dart';
-
-import 'style/changetheme.dart';
+import '../shell.dart';
+import '../style/changetheme.dart';
 
 class MyApp extends StatefulWidget {
   @override
@@ -18,7 +17,7 @@ class MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       theme: CustomTheme.of(context),
       home: Material(
-        child: HomePage(),
+        child: ShellView(),
       ),
     );
   }

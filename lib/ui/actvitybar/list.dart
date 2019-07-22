@@ -1,6 +1,6 @@
-import 'package:coder/ui/sidebar/explorer.dart';
-import 'package:coder/ui/sidebar/git.dart';
-import 'package:coder/ui/sidebar/search.dart';
+import 'package:coder/ui/sideviews/explorer.dart';
+import 'package:coder/ui/sideviews/git.dart';
+import 'package:coder/ui/sideviews/search.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
