@@ -1,42 +1,16 @@
 import 'package:coder/components/Fork_dialog.dart';
-import 'package:coder/components/rounded_button.dart';
 import 'package:coder/style/xd.dart';
 import 'package:coder/style/xd.dart' as prefix0;
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import 'bottom_bar_view.dart';
+
 class BottomBar extends StatelessWidget {
   final TabController controller;
 
   const BottomBar({Key key, this.controller}) : super(key: key);
-  Column paymethod(currency, VoidCallback onTap, qr) {
-    return Column(
-      children: <Widget>[
-        Container(
-          height: 200,
-          width: 200,
-          margin: EdgeInsets.only(top: 20, left: 50, right: 30),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              image: DecorationImage(image: AssetImage(qr))),
-        ),
-        Padding(
-          padding: EdgeInsets.only(top: 20, bottom: 10),
-          child: Text(
-            currency,
-            style: TextStyle(fontFamily: 'sf', fontSize: 20),
-          ),
-        ),
-        RoundedButton(
-          icon: Icons.content_copy,
-          width: 150,
-          text: 'Copy',
-          ontap: onTap,
-        )
-      ],
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,20 +25,68 @@ class BottomBar extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Container(),
+            FlatButton(
+              onPressed: () {
+                showModalBottomSheet(
+                    context: context,
+                    elevation: 7.0,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(20),
+                            topRight: Radius.circular(20))),
+                    builder: (buildContext) {
+                      return Padding(
+                        padding: EdgeInsets.only(top: 20, left: 10, right: 10),
+                        child: BottomBarView(),
+                      );
+                    });
+              },
+              padding: EdgeInsets.only(left: 60),
+              child: Container(
+                  width: 80,
+                  height: 30,
+                  decoration: BoxDecoration(
+                      color: Colors.grey,
+                      boxShadow: prefix0.boxShadow,
+                      borderRadius: BorderRadius.circular(15)),
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 10, right: 5),
+                    child: Center(
+                      child: Row(
+                        children: <Widget>[
+                          Icon(
+                            FontAwesomeIcons.bug,
+                            color: Colors.black,
+                            size: 20,
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            '3',
+                            style: TextStyle(fontSize: 18, color: Colors.black),
+                          )
+                        ],
+                      ),
+                    ),
+                  )),
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 FlatButton(
                   child: Container(
-                    width: 60,
+                    width: 80,
                     height: 30,
                     decoration: BoxDecoration(
                         color: Colors.grey,
                         boxShadow: prefix0.boxShadow,
                         borderRadius: BorderRadius.circular(15)),
                     child: Center(
-                      child: Text('Dart'),
+                      child: Text(
+                        'Dart',
+                        style: TextStyle(fontSize: 18, color: Colors.black),
+                      ),
                     ),
                   ),
                   onPressed: () {
@@ -123,9 +145,56 @@ class BottomBar extends StatelessWidget {
                                             height: 20,
                                           ),
                                           ListTile(
-                                            leading:
-                                                Icon(FontAwesomeIcons.java),
+                                            leading: Container(
+                                              height: 35,
+                                              width: 35,
+                                              decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(35),
+                                                  image: DecorationImage(
+                                                      image: AssetImage(
+                                                          'assets/icons/dart.png'))),
+                                            ),
+                                            title: Text('Dart'),
+                                          ),
+                                          ListTile(
+                                            leading: Container(
+                                              height: 35,
+                                              width: 35,
+                                              decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(35),
+                                                  image: DecorationImage(
+                                                      image: AssetImage(
+                                                          'assets/icons/java.png'))),
+                                            ),
                                             title: Text('Java'),
+                                          ),
+                                          ListTile(
+                                            leading: Container(
+                                              height: 35,
+                                              width: 35,
+                                              decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(35),
+                                                  image: DecorationImage(
+                                                      image: AssetImage(
+                                                          'assets/icons/js.png'))),
+                                            ),
+                                            title: Text('Java Script'),
+                                          ),
+                                          ListTile(
+                                            leading: Container(
+                                              height: 35,
+                                              width: 35,
+                                              decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(35),
+                                                  image: DecorationImage(
+                                                      image: AssetImage(
+                                                          'assets/icons/py.png'))),
+                                            ),
+                                            title: Text('Python'),
                                           ),
                                         ],
                                       ),

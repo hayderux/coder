@@ -1,7 +1,6 @@
 import 'package:coder/style/appthemes.dart';
 import 'package:flutter/material.dart';
 import '../shell.dart';
-import '../style/changetheme.dart';
 
 class MyApp extends StatefulWidget {
   @override

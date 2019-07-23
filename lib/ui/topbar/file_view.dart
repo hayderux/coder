@@ -4,6 +4,7 @@ import 'package:coder/ui/bottombar/bottom_bar.dart';
 import 'package:coder/ui/editor/editor.dart';
 import 'package:coder/ui/topbar/tab_group/tab_group.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'env.dart';
 
 class FileView extends StatefulWidget {
@@ -13,6 +14,7 @@ class FileView extends StatefulWidget {
 
 class _FileViewState extends State<FileView> with TickerProviderStateMixin {
   TabController controller;
+  TabController controller2;
   int currtab = 0;
   void initState() {
     super.initState();
@@ -20,6 +22,7 @@ class _FileViewState extends State<FileView> with TickerProviderStateMixin {
   }
 
   void initTab() async {
+    controller2 = TabController(vsync: this, length: 2, initialIndex: 0);
     controller = TabController(vsync: this, length: 2, initialIndex: currtab);
   }
 
@@ -49,6 +52,126 @@ class _FileViewState extends State<FileView> with TickerProviderStateMixin {
                       elevation: 0.0,
                       backgroundColor: Colors.transparent,
                       centerTitle: false,
+                      title: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: <Widget>[
+                          Container(
+                            height: 40,
+                            width: 200,
+                            margin: EdgeInsets.only(top: 10),
+                            decoration: BoxDecoration(
+                                color: Colors.grey.withOpacity(0.3),
+                                borderRadius: BorderRadius.circular(25)),
+                            child: Padding(
+                              padding: EdgeInsets.only(left: 5, right: 5),
+                              child: Row(
+                                children: <Widget>[
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Container(
+                                    height: 35,
+                                    width: 35,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(35),
+                                        image: DecorationImage(
+                                            image: AssetImage(
+                                                'assets/icons/js.png'))),
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Text('main.dart')
+                                ],
+                              ),
+                            ),
+                          ),
+                          InkWell(
+                              onTap: () {
+                                if (controller2.index == 0) {
+                                  controller2
+                                      .animateTo((controller2.index + 1) % 2);
+                                } else {
+                                  controller2
+                                      .animateTo((controller2.index - 1) % 2);
+                                }
+                              },
+                              child: Container(
+                                height: 40,
+                                width: 200,
+                                margin: EdgeInsets.only(top: 10, left: 20),
+                                decoration: BoxDecoration(
+                                    color: Colors.grey,
+                                    borderRadius: BorderRadius.circular(25)),
+                                child: Padding(
+                                  padding: EdgeInsets.only(left: 5, right: 5),
+                                  child: Row(
+                                    children: <Widget>[
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Container(
+                                        height: 35,
+                                        width: 35,
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(35),
+                                            image: DecorationImage(
+                                                image: AssetImage(
+                                                    'assets/icons/py.png'))),
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text('main.dart')
+                                    ],
+                                  ),
+                                ),
+                              )),
+                          InkWell(
+                              onTap: () {
+                                if (controller2.index == 0) {
+                                  controller2
+                                      .animateTo((controller2.index + 1) % 2);
+                                } else {
+                                  controller2
+                                      .animateTo((controller2.index - 1) % 2);
+                                }
+                              },
+                              child: Container(
+                                height: 40,
+                                width: 200,
+                                margin: EdgeInsets.only(top: 10, left: 20),
+                                decoration: BoxDecoration(
+                                    color: Colors.grey,
+                                    borderRadius: BorderRadius.circular(25)),
+                                child: Padding(
+                                  padding: EdgeInsets.only(left: 5, right: 5),
+                                  child: Row(
+                                    children: <Widget>[
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Container(
+                                        height: 35,
+                                        width: 35,
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(35),
+                                            image: DecorationImage(
+                                                image: AssetImage(
+                                                    'assets/icons/java.png'))),
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text('main.dart')
+                                    ],
+                                  ),
+                                ),
+                              ))
+                        ],
+                      ),
                       actions: <Widget>[
                         IconButton(
                           icon: Icon(
@@ -94,7 +217,15 @@ class _FileViewState extends State<FileView> with TickerProviderStateMixin {
                       body: TabBarView(
                         controller: controller,
                         children: <Widget>[
-                          Container(),
+                          TabBarView(
+                            controller: controller2,
+                            children: <Widget>[
+                              Container(),
+                              Container(
+                                color: Colors.green,
+                              )
+                            ],
+                          ),
                           TabGroup(
                             ontap: () {
                               controller.animateTo(0);

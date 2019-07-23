@@ -16,15 +16,9 @@ dependencies:
   cupertino_icons: ^0.1.2
   font_awesome_flutter: ^8.4.0
   percent_indicator: ^1.0.14
-  bubble_tab_indicator:
-  rounded_modal: ^1.0.0
-  groovin_material_icons: ^1.1.6
   flutter_icons: ^0.1.3
   simple_coverflow: ^0.0.8
   flutter_swiper: ^1.1.5
-  scoped_model: ^1.0.1
-  rxdart: ^0.21.0
-  breakpoint: ^1.0.0
   auto_size_text: ^1.1.2
   localstorage: ^2.0.0
 
@@ -42,6 +36,10 @@ flutter:
   uses-material-design: true
   assets:
     - assets/1.jpg
+    - assets/icons/js.png
+    - assets/icons/py.png
+    - assets/icons/java.png
+    - assets/icons/dart.png
 
   fonts:
 
