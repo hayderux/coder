@@ -1,11 +1,14 @@
 import 'package:coder/components/Fork_dialog.dart';
+import 'package:coder/components/search_bar.dart';
 import 'package:coder/style/xd.dart';
 import 'package:coder/style/xd.dart' as prefix0;
+import 'package:coder/ui/bottombar/language/language_mode.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'bottom_bar_view.dart';
+import 'language/languages_list.dart';
 
 class BottomBar extends StatelessWidget {
   final TabController controller;
@@ -106,99 +109,7 @@ class BottomBar extends StatelessWidget {
                                 child: Padding(
                                     padding: EdgeInsets.only(
                                         top: 10, left: 10, right: 10),
-                                    child: Scrollbar(
-                                        child: SingleChildScrollView(
-                                      reverse: false,
-                                      physics: NeverScrollableScrollPhysics(),
-                                      scrollDirection: Axis.vertical,
-                                      child: Column(
-                                        children: <Widget>[
-                                          Container(
-                                              margin: EdgeInsets.only(
-                                                  left: 10, top: 20, right: 10),
-                                              height: 50,
-                                              decoration: BoxDecoration(
-                                                  color: Theme.of(context)
-                                                      .cardColor,
-                                                  boxShadow: boxShadow2,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          10)),
-                                              child: Padding(
-                                                padding:
-                                                    EdgeInsets.only(left: 10),
-                                                child: TextField(
-                                                  cursorColor: Colors.black,
-                                                  autocorrect: true,
-                                                  decoration: InputDecoration(
-                                                      border: InputBorder.none,
-                                                      hintText: 'Search',
-                                                      fillColor: Colors.black,
-                                                      focusColor: Colors.black,
-                                                      hoverColor: Colors.black,
-                                                      icon: Icon(
-                                                        Icons.search,
-                                                      )),
-                                                ),
-                                              )),
-                                          SizedBox(
-                                            height: 20,
-                                          ),
-                                          ListTile(
-                                            leading: Container(
-                                              height: 35,
-                                              width: 35,
-                                              decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(35),
-                                                  image: DecorationImage(
-                                                      image: AssetImage(
-                                                          'assets/icons/dart.png'))),
-                                            ),
-                                            title: Text('Dart'),
-                                          ),
-                                          ListTile(
-                                            leading: Container(
-                                              height: 35,
-                                              width: 35,
-                                              decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(35),
-                                                  image: DecorationImage(
-                                                      image: AssetImage(
-                                                          'assets/icons/java.png'))),
-                                            ),
-                                            title: Text('Java'),
-                                          ),
-                                          ListTile(
-                                            leading: Container(
-                                              height: 35,
-                                              width: 35,
-                                              decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(35),
-                                                  image: DecorationImage(
-                                                      image: AssetImage(
-                                                          'assets/icons/js.png'))),
-                                            ),
-                                            title: Text('Java Script'),
-                                          ),
-                                          ListTile(
-                                            leading: Container(
-                                              height: 35,
-                                              width: 35,
-                                              decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(35),
-                                                  image: DecorationImage(
-                                                      image: AssetImage(
-                                                          'assets/icons/py.png'))),
-                                            ),
-                                            title: Text('Python'),
-                                          ),
-                                        ],
-                                      ),
-                                    ))),
+                                    child: LanguageMode()),
                               ));
                         });
                   },

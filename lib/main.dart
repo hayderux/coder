@@ -9,7 +9,7 @@ import 'app/app.dart';
 void main() async {
   debugDefaultTargetPlatformOverride = TargetPlatform.iOS;
   runApp(CustomTheme(
-    initialThemeKey: MyThemeKeys.LIGHT,
+    initialThemeKey: MyThemeKeys.DARK,
     child: MyApp(),
   ));
 }
