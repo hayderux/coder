@@ -10,8 +10,18 @@ class SettingView extends StatefulWidget {
 }
 
 class _SettingViewState extends State<SettingView> {
+  ThemeData mytheme = ThemeData(
+      primaryColor: Colors.blue.shade800,
+      accentColor: Colors.grey.shade200.withOpacity(0.6));
   int currentIdx = 0;
-  
+  loadcolor(int i) {
+    if (i == currentIdx) {
+      return mytheme.primaryColor;
+    } else {
+      return mytheme.accentColor;
+    }
+  }
+
   Widget _buildList() {
     return ListView.builder(
         physics: NeverScrollableScrollPhysics(),
@@ -23,9 +33,12 @@ class _SettingViewState extends State<SettingView> {
               child: Column(
                 children: <Widget>[
                   ListTile(
-                    title: Text(settinglist[i].title),
+                    title: Text(
+                      settinglist[i].title,
+                      style: TextStyle(color: loadcolor(i), fontSize: 18),
+                    ),
                     leading: Icon(settinglist[i].icon,
-                        size: 30, color: Theme.of(context).primaryColor),
+                        size: 30, color: loadcolor(i)),
                     selected: i == currentIdx,
                     onTap: () {
                       setState(() {
@@ -53,10 +66,10 @@ class _SettingViewState extends State<SettingView> {
                 child: _buildList(),
               ),
             ),
+            VerticalDivider(),
             Expanded(
                 child: Container(
               decoration: BoxDecoration(
-                  boxShadow: boxShadow,
                   color: Theme.of(context).scaffoldBackgroundColor),
               child: settinglist[currentIdx].builder(context),
             ))
