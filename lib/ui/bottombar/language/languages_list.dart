@@ -4,7 +4,7 @@ class Language {
   Language(this.title, this.icon);
 }
 
-List<Language> languages_list = [
+List<Language> languageslist = [
   Language('Dart', 'assets/icons/dart.png'),
   Language('Java', 'assets/icons/java.png'),
   Language('JavaScript', 'assets/icons/js.png'),

@@ -20,7 +20,7 @@ class _LanguageModeState extends State<LanguageMode> {
       body: ListView.builder(
         padding: EdgeInsets.only(top: 30),
         shrinkWrap: true,
-        itemCount: languages_list.length,
+        itemCount: languageslist.length,
         itemBuilder: (buildContext, index) {
           return ListTile(
             onTap: () {
@@ -32,9 +32,9 @@ class _LanguageModeState extends State<LanguageMode> {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(35),
                   image: DecorationImage(
-                      image: AssetImage(languages_list[index].icon))),
+                      image: AssetImage(languageslist[index].icon))),
             ),
-            title: Text(languages_list[index].title),
+            title: Text(languageslist[index].title),
           );
         },
       ),

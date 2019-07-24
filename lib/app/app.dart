@@ -1,4 +1,3 @@
-import 'package:coder/style/appthemes.dart';
 import 'package:coder/style/changetheme.dart';
 import 'package:flutter/material.dart';
 import '../shell.dart';

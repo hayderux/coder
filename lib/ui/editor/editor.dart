@@ -1,4 +1,3 @@
-import 'package:coder/ui/topbar/tab_group/tab_group.dart';
 import 'package:flutter/material.dart';
 
 class EditorView extends StatefulWidget {

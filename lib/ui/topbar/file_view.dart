@@ -6,6 +6,7 @@ import 'package:coder/ui/topbar/tab_group/tab_group.dart';
 import 'package:coder/ui/topbar/tabs_manger/tab_container.dart';
 import 'package:flutter/material.dart';
 import 'env.dart';
+import 'tabs_manger/tabs_list.dart';
 
 class FileView extends StatefulWidget {
   @override
@@ -14,6 +15,7 @@ class FileView extends StatefulWidget {
 
 class _FileViewState extends State<FileView> with TickerProviderStateMixin {
   TabController controller;
+  int currentIdx = 0;
   TabController controller2;
   int currtab = 0;
   void initState() {
@@ -24,6 +26,14 @@ class _FileViewState extends State<FileView> with TickerProviderStateMixin {
   void initTab() async {
     controller2 = TabController(vsync: this, length: 2, initialIndex: 0);
     controller = TabController(vsync: this, length: 2, initialIndex: currtab);
+  }
+
+  loadcolor(int i) {
+    if (i == currentIdx) {
+      return Theme.of(context).cardColor;
+    } else {
+      return Theme.of(context).bottomAppBarColor;
+    }
   }
 
   @override
@@ -53,9 +63,21 @@ class _FileViewState extends State<FileView> with TickerProviderStateMixin {
                       elevation: 0.0,
                       backgroundColor: Colors.transparent,
                       centerTitle: false,
-                      title: ListView(
+                      title: ListView.builder(
                         scrollDirection: Axis.horizontal,
-                        children: <Widget>[TabContainer()],
+                        itemCount: tabslist.length,
+                        itemBuilder: (buildContext, index) {
+                          return TabContainer(
+                            filename: tabslist[index].name,
+                            fileicon: tabslist[index].icon,
+                            color: loadcolor(index),
+                            ontap: () {
+                              setState(() {
+                                currentIdx = index;
+                              });
+                            },
+                          );
+                        },
                       ),
                       actions: <Widget>[
                         IconButton(

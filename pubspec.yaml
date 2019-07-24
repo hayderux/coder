@@ -11,6 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   
+  bubble_tab_indicator: ^0.1.4
 
   
   cupertino_icons: ^0.1.2

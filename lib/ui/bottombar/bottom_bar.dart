@@ -1,6 +1,4 @@
 import 'package:coder/components/Fork_dialog.dart';
-import 'package:coder/components/search_bar.dart';
-import 'package:coder/style/xd.dart';
 import 'package:coder/style/xd.dart' as prefix0;
 import 'package:coder/ui/bottombar/language/language_mode.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +6,6 @@ import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'bottom_bar_view.dart';
-import 'language/languages_list.dart';
 
 class BottomBar extends StatelessWidget {
   final TabController controller;
