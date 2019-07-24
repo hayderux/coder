@@ -67,6 +67,7 @@ class _FileViewState extends State<FileView> with TickerProviderStateMixin {
                         itemCount: tabslist.length,
                         itemBuilder: (buildContext, index) {
                           return TabContainer(
+                            isSelected: currentIdx == index,
                             filename: tabslist[index].name,
                             fileicon: tabslist[index].icon,
                             color: loadcolor(index),

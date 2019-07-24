@@ -1,7 +1,6 @@
 import 'package:coder/components/close_button.dart';
 import 'package:coder/style/xd.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class TabGroup extends StatefulWidget {
   final VoidCallback ontap;
@@ -50,14 +49,16 @@ class _TabGroupState extends State<TabGroup> {
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(35),
                                       image: DecorationImage(
-                                          image: AssetImage('assets/icons/js.png'))),
+                                          image: AssetImage(
+                                              'assets/icons/js.png'))),
                                 ),
                                 SizedBox(
                                   width: 10,
                                 ),
-                                Text('main.js',style: TextStyle(
-                                  fontSize: 18
-                                ),)
+                                Text(
+                                  'main.js',
+                                  style: TextStyle(fontSize: 18),
+                                )
                               ],
                             ),
                             SizedBox(
