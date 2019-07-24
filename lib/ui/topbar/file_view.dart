@@ -26,11 +26,13 @@ class _FileViewState extends State<FileView> with TickerProviderStateMixin {
     controller = TabController(vsync: this, length: 2, initialIndex: currtab);
   }
 
+  ThemeData mytheme =
+      ThemeData(accentColor: Colors.grey.shade200.withOpacity(0.2));
   loadcolor(int i) {
     if (i == currentIdx) {
       return Theme.of(context).cardColor;
     } else {
-      return Theme.of(context).bottomAppBarColor;
+      return mytheme.accentColor;
     }
   }
 
@@ -92,7 +94,7 @@ class _FileViewState extends State<FileView> with TickerProviderStateMixin {
                               controller.animateTo((controller.index - 1) % 2);
                             }
                           },
-                        ), //
+                        ),
                         IconButton(
                           icon: Icon(
                             Icons.laptop_mac,
@@ -120,9 +122,9 @@ class _FileViewState extends State<FileView> with TickerProviderStateMixin {
                     ),
                   ),
                   body: Container(
-                    //tabslist[currentIdx].builder(context)
                     child: EditorView(
                       body: TabBarView(
+                        physics: NeverScrollableScrollPhysics(),
                         controller: controller,
                         children: <Widget>[
                           tabslist[currentIdx].builder(context),

@@ -12,6 +12,7 @@ class ShellView extends StatefulWidget {
 class _ShellViewState extends State<ShellView> with TickerProviderStateMixin {
   int currentIdx = 0;
   TabController controller;
+  bool showsidebar = false;
   void initState() {
     super.initState();
     controller = TabController(length: 4, vsync: this, initialIndex: 0);
@@ -22,6 +23,30 @@ class _ShellViewState extends State<ShellView> with TickerProviderStateMixin {
       return Theme.of(context).bottomAppBarColor;
     } else {
       return Theme.of(context).cardColor.withOpacity(0.2);
+    }
+  }
+
+  Widget showside() {
+    if (showsidebar == false) {
+      return Center();
+    } else {
+      return SizedBox(
+        width: 350,
+        child: ClipRect(
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+            child: Container(
+              child: list[currentIdx].builder(context),
+              decoration: BoxDecoration(
+                  border: Border(right: BorderSide(color: Colors.black)),
+                  gradient: LinearGradient(colors: [
+                    Color(0xff12c2e9),
+                    Color(0xffc471ed),
+                  ])),
+            ),
+          ),
+        ),
+      );
     }
   }
 
@@ -37,13 +62,26 @@ class _ShellViewState extends State<ShellView> with TickerProviderStateMixin {
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(20),
                         bottomLeft: Radius.circular(20))),
-                child: ListTile(
-                  leading: Icon(list[i].icon, size: 30, color: Colors.white),
-                  selected: i == currentIdx,
+                child: InkWell(
+                  child: ListTile(
+                      leading:
+                          Icon(list[i].icon, size: 30, color: Colors.white),
+                      selected: i == currentIdx),
                   onTap: () {
                     setState(() {
                       currentIdx = i;
                     });
+                  },
+                  onDoubleTap: () {
+                    if (showsidebar == false) {
+                      setState(() {
+                        showsidebar = true;
+                      });
+                    } else {
+                      setState(() {
+                        showsidebar = false;
+                      });
+                    }
                   },
                 ),
               ));
@@ -62,25 +100,7 @@ class _ShellViewState extends State<ShellView> with TickerProviderStateMixin {
               body: _buildList(),
             ),
           ),
-          /*SizedBox(
-            width: 350,
-            child: ClipRect(
-              child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
-                child: Container(
-                  child: list[currentIdx].builder(context),
-                  decoration: BoxDecoration(
-                    border: Border(
-                      right: BorderSide(color: Colors.black)
-                    ),
-                      gradient: LinearGradient(colors: [
-                    Color(0xff12c2e9),
-                    Color(0xffc471ed),
-                  ])),
-                ),
-              ),
-            ),
-          ),*/
+          showside(),
           Expanded(
             flex: 1,
             child: Container(

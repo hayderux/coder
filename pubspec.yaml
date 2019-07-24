@@ -11,9 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   
-  bubble_tab_indicator: ^0.1.4
 
-  
   cupertino_icons: ^0.1.2
   font_awesome_flutter: ^8.4.0
   percent_indicator: ^1.0.14
