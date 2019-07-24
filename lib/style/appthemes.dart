@@ -23,7 +23,7 @@ class Apptheme {
       labelStyle: TextStyle(fontFamily: 'sf'),
       indicatorSize: TabBarIndicatorSize.label,
     ),
-    bottomAppBarColor: Color(0xff007ACC),
+    bottomAppBarColor: Colors.grey.shade200,
     accentIconTheme: IconThemeData(color: Colors.black),
     iconTheme: IconThemeData(color: Colors.black),
     fontFamily: 'sf',

@@ -16,7 +16,6 @@ class FileView extends StatefulWidget {
 class _FileViewState extends State<FileView> with TickerProviderStateMixin {
   TabController controller;
   int currentIdx = 0;
-  TabController controller2;
   int currtab = 0;
   void initState() {
     super.initState();
@@ -24,7 +23,6 @@ class _FileViewState extends State<FileView> with TickerProviderStateMixin {
   }
 
   void initTab() async {
-    controller2 = TabController(vsync: this, length: 2, initialIndex: 0);
     controller = TabController(vsync: this, length: 2, initialIndex: currtab);
   }
 
@@ -41,7 +39,7 @@ class _FileViewState extends State<FileView> with TickerProviderStateMixin {
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
-            color: Color(0xff444444),
+            color: Theme.of(context).bottomAppBarColor,
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(20), bottomLeft: Radius.circular(20))),
         child: Row(
@@ -50,7 +48,8 @@ class _FileViewState extends State<FileView> with TickerProviderStateMixin {
               //
               width: 80,
               child: Container(
-                decoration: BoxDecoration(color: Color(0xff444444)),
+                decoration:
+                    BoxDecoration(color: Theme.of(context).bottomAppBarColor),
               ),
             ),
             Expanded(
@@ -120,19 +119,12 @@ class _FileViewState extends State<FileView> with TickerProviderStateMixin {
                     ),
                   ),
                   body: Container(
+                    //tabslist[currentIdx].builder(context)
                     child: EditorView(
                       body: TabBarView(
                         controller: controller,
                         children: <Widget>[
-                          TabBarView(
-                            controller: controller2,
-                            children: <Widget>[
-                              Container(),
-                              Container(
-                                color: Colors.green,
-                              )
-                            ],
-                          ),
+                          tabslist[currentIdx].builder(context),
                           TabGroup(
                             ontap: () {
                               controller.animateTo(0);

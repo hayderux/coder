@@ -10,7 +10,7 @@ class _SearchVState extends State<SearchV> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).cardColor,
+      backgroundColor: Theme.of(context).bottomAppBarColor,
       appBar: AppBar(
         centerTitle: false,
         elevation: 0.0,

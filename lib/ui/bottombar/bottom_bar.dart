@@ -16,7 +16,7 @@ class BottomBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 50,
-      color: Color(0xff444444),
+      color: Theme.of(context).bottomAppBarColor,
       child: Padding(
         padding: EdgeInsets.only(
           left: 20,

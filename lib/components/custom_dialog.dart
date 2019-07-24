@@ -18,16 +18,17 @@ class CustomDialog extends StatelessWidget {
               borderRadius: BorderRadius.circular(15),
             ),
             elevation: 6.0,
-            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+            backgroundColor: Theme.of(context).bottomAppBarColor,
             child: Padding(
               padding: EdgeInsets.only(top: 15, bottom: 10, left: 5, right: 5),
               child: Container(
-                decoration:
-                    BoxDecoration(borderRadius: BorderRadius.circular(30)),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                ),
                 child: Container(
                   height: height,
                   child: Scaffold(
-                    //backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+                    backgroundColor: Theme.of(context).bottomAppBarColor,
                     appBar: AppBar(
                         elevation: 0.0,
                         title: Text(
@@ -42,7 +43,7 @@ class CustomDialog extends StatelessWidget {
                         ),
                         automaticallyImplyLeading: false,
                         backgroundColor:
-                            Theme.of(context).scaffoldBackgroundColor),
+                            Theme.of(context).bottomAppBarColor),
                     body: body,
                   ),
                 ),

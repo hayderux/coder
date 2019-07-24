@@ -70,6 +70,9 @@ class _ShellViewState extends State<ShellView> with TickerProviderStateMixin {
                 child: Container(
                   child: list[currentIdx].builder(context),
                   decoration: BoxDecoration(
+                    border: Border(
+                      right: BorderSide(color: Colors.black)
+                    ),
                       gradient: LinearGradient(colors: [
                     Color(0xff12c2e9),
                     Color(0xffc471ed),

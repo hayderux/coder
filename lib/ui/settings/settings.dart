@@ -55,7 +55,7 @@ class _SettingViewState extends State<SettingView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        backgroundColor: Theme.of(context).bottomAppBarColor,
         body: Row(
           children: <Widget>[
             Container(
@@ -69,7 +69,7 @@ class _SettingViewState extends State<SettingView> {
             Expanded(
                 child: Container(
               decoration: BoxDecoration(
-                  color: Theme.of(context).scaffoldBackgroundColor),
+                  color: Theme.of(context).bottomAppBarColor),
               child: settinglist[currentIdx].builder(context),
             ))
           ],
