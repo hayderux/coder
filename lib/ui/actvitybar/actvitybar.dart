@@ -1,8 +1,7 @@
 import 'package:coder/components/Fork_dialog.dart';
 import 'package:coder/components/custom_dialog.dart';
-import 'package:coder/ui/settings/settings.dart';
 import 'package:flutter/material.dart';
-
+import '../settings/settings.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ActvityBar extends StatefulWidget {

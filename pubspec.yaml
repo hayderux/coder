@@ -39,6 +39,7 @@ flutter:
     - assets/icons/py.png
     - assets/icons/java.png
     - assets/icons/dart.png
+    - lib/ui/editor/example_code.dart
 
   fonts:
 

@@ -18,11 +18,13 @@ class _ShellViewState extends State<ShellView> with TickerProviderStateMixin {
     controller = TabController(length: 4, vsync: this, initialIndex: 0);
   }
 
+  ThemeData mythemex = ThemeData(
+      buttonColor: Colors.white, accentColor: Colors.grey.withOpacity(0.6));
   loadcolor(int i) {
     if (i == currentIdx) {
-      return Theme.of(context).bottomAppBarColor;
+      return mythemex.primaryColor;
     } else {
-      return Theme.of(context).cardColor.withOpacity(0.2);
+      return mythemex.accentColor;
     }
   }
 
@@ -58,30 +60,24 @@ class _ShellViewState extends State<ShellView> with TickerProviderStateMixin {
               padding: EdgeInsets.only(top: 30, left: 15),
               child: Container(
                 decoration: BoxDecoration(
-                    color: loadcolor(i),
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(20),
                         bottomLeft: Radius.circular(20))),
                 child: InkWell(
                   child: ListTile(
                       leading:
-                          Icon(list[i].icon, size: 30, color: Colors.white),
+                          Icon(list[i].icon, size: 30, color: loadcolor(i)),
                       selected: i == currentIdx),
                   onTap: () {
                     setState(() {
                       currentIdx = i;
+                      showsidebar = true;
                     });
                   },
                   onDoubleTap: () {
-                    if (showsidebar == false) {
-                      setState(() {
-                        showsidebar = true;
-                      });
-                    } else {
-                      setState(() {
-                        showsidebar = false;
-                      });
-                    }
+                    setState(() {
+                      showsidebar = false;
+                    });
                   },
                 ),
               ));

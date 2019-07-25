@@ -1,4 +1,4 @@
-import 'package:coder/style/xd.dart';
+import '../style/xd.dart';
 import 'package:flutter/material.dart';
 
 

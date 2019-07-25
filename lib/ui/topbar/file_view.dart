@@ -1,9 +1,14 @@
 import 'package:coder/components/Fork_dialog.dart';
 import 'package:coder/components/custom_dialog.dart';
+import 'package:coder/components/rich_editable_text.dart';
+import 'package:coder/components/rich_text_field.dart';
 import 'package:coder/ui/bottombar/bottom_bar.dart';
 import 'package:coder/ui/editor/editor.dart';
+import 'package:coder/ui/editor/highlighter.dart';
+import 'package:coder/ui/editor/parser.dart';
 import 'package:coder/ui/topbar/tab_group/tab_group.dart';
 import 'package:coder/ui/topbar/tabs_manger/tab_container.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'env.dart';
 import 'tabs_manger/tabs_list.dart';
@@ -15,15 +20,39 @@ class FileView extends StatefulWidget {
 
 class _FileViewState extends State<FileView> with TickerProviderStateMixin {
   TabController controller;
+  ScrollController _scrollController;
+  String _exampleCode;
   int currentIdx = 0;
   int currtab = 0;
   void initState() {
     super.initState();
     initTab();
+    initScroll();
+  }
+
+  @override
+  void didChangeDependencies() {
+    try {
+      getExampleCode('buttons_raised', DefaultAssetBundle.of(context))
+          .then<void>((String code) {
+        if (mounted) {
+          setState(() {
+            _exampleCode = code ?? 'Example code not found';
+          });
+        }
+      });
+    } catch (e) {
+      print("Error laoding assets $e");
+    }
+    super.didChangeDependencies();
   }
 
   void initTab() async {
     controller = TabController(vsync: this, length: 2, initialIndex: currtab);
+  }
+
+  void initScroll() async {
+    _scrollController = ScrollController();
   }
 
   ThemeData mytheme =
@@ -38,6 +67,11 @@ class _FileViewState extends State<FileView> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    final SyntaxHighlighterStyle style =
+        Theme.of(context).brightness == Brightness.dark
+            ? SyntaxHighlighterStyle.darkThemeStyle()
+            : SyntaxHighlighterStyle.lightThemeStyle();
+
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -52,6 +86,10 @@ class _FileViewState extends State<FileView> with TickerProviderStateMixin {
               child: Container(
                 decoration:
                     BoxDecoration(color: Theme.of(context).bottomAppBarColor),
+                child: ListView(
+                  scrollDirection: Axis.vertical,
+                  controller: ScrollController(),
+                ),
               ),
             ),
             Expanded(
@@ -127,7 +165,55 @@ class _FileViewState extends State<FileView> with TickerProviderStateMixin {
                         physics: NeverScrollableScrollPhysics(),
                         controller: controller,
                         children: <Widget>[
-                          tabslist[currentIdx].builder(context),
+                          SingleChildScrollView(
+                            controller: _scrollController,
+                            scrollDirection: Axis.vertical,
+                            child: Scrollbar(
+                              child: RichTextField(
+                                onChangedSpan: (onc) {},
+                                controller: RichTextEditingController(
+                                    textSpan: TextSpan(children: [
+                                  DartSyntaxHighlighter(style)
+                                      .format(_exampleCode)
+                                ])),
+                                maxLines: null,
+                                style: TextStyle(fontSize: 30),
+                                decoration:
+                                    InputDecoration(border: InputBorder.none),
+                              ),
+                            ),
+                          )
+                          /*SingleChildScrollView(
+                              controller: _scrollController,
+                              //child: tabslist[currentIdx].builder(context),
+                              child: Scrollbar(
+                                child: ListView(
+                                  shrinkWrap: true,
+                                  controller: _scrollController,
+                                  children: <Widget>[
+                                    Row(
+                                      children: <Widget>[
+                                        Padding(
+                                          padding: const EdgeInsets.all(16.0),
+                                          child: RichText(
+                                            textAlign: TextAlign.start,
+                                            text: TextSpan(
+                                              style: const TextStyle(
+                                                  fontFamily: 'monospace',
+                                                  fontSize: 20.0),
+                                              children: <TextSpan>[
+                                                DartSyntaxHighlighter(style)
+                                                    .format(_exampleCode)
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              )),*/
+                          ,
                           TabGroup(
                             ontap: () {
                               controller.animateTo(0);
