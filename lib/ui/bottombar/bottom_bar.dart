@@ -3,7 +3,6 @@ import 'package:coder/style/xd.dart' as prefix0;
 import 'package:coder/ui/bottombar/language/language_mode.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'bottom_bar_view.dart';
 
@@ -55,7 +54,7 @@ class BottomBar extends StatelessWidget {
                       child: Row(
                         children: <Widget>[
                           Icon(
-                            FontAwesomeIcons.bug,
+                            Icons.bug_report,
                             color: Colors.black,
                             size: 20,
                           ),

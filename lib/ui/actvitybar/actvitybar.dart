@@ -2,7 +2,6 @@ import 'package:coder/components/Fork_dialog.dart';
 import 'package:coder/components/custom_dialog.dart';
 import 'package:flutter/material.dart';
 import '../settings/settings.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ActvityBar extends StatefulWidget {
   final Widget body;
@@ -47,7 +46,7 @@ class ActvityBarState extends State<ActvityBar> {
             SizedBox(
               height: 30,
             ),
-            bottomicon(FontAwesomeIcons.cog, () {
+            bottomicon(Icons.settings, () {
               showDialogF(
                   context: context,
                   barrierDismissible: true,

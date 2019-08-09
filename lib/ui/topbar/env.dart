@@ -1,6 +1,5 @@
 import 'package:coder/style/xd.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Env extends StatefulWidget {
   @override
@@ -40,10 +39,10 @@ class _EnvState extends State<Env> {
       padding: EdgeInsets.only(left: 10, bottom: 20, right: 10, top: 30),
       scrollDirection: Axis.vertical,
       children: <Widget>[
-        envcontainer(FontAwesomeIcons.terminal, Colors.black),
-        envcontainer(FontAwesomeIcons.windows, Colors.blue.shade800),
-        envcontainer(FontAwesomeIcons.ubuntu, Color(0xffdd4814)),
-        envcontainer(FontAwesomeIcons.apple, Color(0xff7d7d7d))
+        //envcontainer(Icons.computer, Colors.black),
+        //envcontainer(FontAwesomeIcons.windows, Colors.blue.shade800),
+        //envcontainer(FontAwesomeIcons.ubuntu, Color(0xffdd4814)),
+        // envcontainer(FontAwesomeIcons.apple, Color(0xff7d7d7d))
       ],
     );
   }
